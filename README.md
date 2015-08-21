@@ -28,7 +28,7 @@ Replace <url> for the actual url you want to download
 
 ### Usage
 
-The program accept some parameters at the invoke
+The program accept some parameters at the invoking time 
 
 * -c --continue If you are trying to continue a download which was interrupted you need to set this flag. If you don't
 use this flag the previous download attempts for the same resource are going to be deleted.
@@ -39,3 +39,11 @@ changed. If this parameter is absent the file name will be extracted from the ur
 ```bash
 $ python client.py <url> -c -o <filename.extension> -v 
 ```
+
+### Resources
+
+The next are some resources that were useful at the time I was writing this program: 
+
+* http://www.thinkbroadband.com/download.html Download test files
+* http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html Range HTTP header
+* https://docs.python.org/2/library/urllib2.html How to make a request in HTTP with Python
