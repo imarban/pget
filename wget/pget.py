@@ -1,3 +1,4 @@
+import hashlib
 import logging
 import urllib2
 from urllib2 import HTTPError
@@ -12,6 +13,14 @@ logger = logging.getLogger('pget.download')
 BLOCK_SIZE = 8192
 
 
+def get_checksum(filename):
+    hash_ = hashlib.md5()
+    with open(filename) as f:
+        for chunk in iter(lambda: f.read(4096), ""):
+            hash_.update(chunk)
+    return hash_.hexdigest()
+
+
 def download_file(url, offset=0, filename='tmp', verbosity=True):
     """
     Intended for simulating the wget linux command
@@ -23,7 +32,9 @@ def download_file(url, offset=0, filename='tmp', verbosity=True):
     """
     logger.setLevel(logging.DEBUG) if verbosity else logger.setLevel(logging.INFO)
 
-    headers = {'Range': "bytes=%s-" % offset}
+    headers = {'Range': "bytes=%s-" % offset, 'Accept': '*/*', 'Connection': 'keep-alive',
+               'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) '
+                             'Chrome/23.0.1271.64 Safari/537.11'}
     logger.debug("Setting Range Header for HTTP Request")
 
     if offset != 0:
@@ -54,9 +65,13 @@ def download_file(url, offset=0, filename='tmp', verbosity=True):
         f.close()
 
         logger.info("The download has finished")
+        return True
 
     except HTTPError, e:
         if e.code == 416:
             logger.info("This file has been downloaded already")
+
     except ValueError:
         logger.exception("The string %s is not a valid url" % url)
+
+    return False
