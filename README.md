@@ -24,7 +24,7 @@ $ cd pget
 $ python client.py <url> 
 ```
 
-Replace <url> for the actual url you want to download
+Replace <url> for the actual url you want to download. You will get the file downloaded to the current path.
 
 ### Usage
 
@@ -39,6 +39,8 @@ changed. If this parameter is absent the file name will be extracted from the ur
 ```bash
 $ python client.py <url> -c -o <filename.extension> -v 
 ```
+
+You will get the file downloaded to the current path
 
 ### Resources
 
