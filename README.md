@@ -15,7 +15,7 @@ This program is not intended to be used in a production system. It aims to show 
 
 ### Clone the repo
 ```bash
-$ git clone git@github.com:Nearsoft/choiz.git
+$ git clone https://github.com/imarban/pget.git
 $ cd pget
 ```
 
