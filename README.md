@@ -1,10 +1,10 @@
 pget
 ======
 
-Python program that emulates the wget linux command. This is intended to download a resource. This program allows 
+Python program that emulates the wget linux command. This program allows 
 continue or resume a download where it failed or was interrupted.
 
-This program is not intended to be used in a production system. It aims to show how resume downloading works.
+This program is not intended to be used in a production system. It aims to show how resuming downloads works.
 ## Installation and Getting Started
 * requirements
 * clone this repo
