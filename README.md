@@ -1,4 +1,4 @@
-pget - MULTITHREAD IMPLEMENTATION BRANCH
+pget - Multithread Implementation branch
 ======
 
 Python program that emulates the wget linux command. This program allows 
